@@ -1,0 +1,18 @@
+{
+  "version": "0.0.0",
+  "private": true,
+  "name": "etv_app",
+  "description": "A application for angular ui",
+  "repository": "https://github.com/bishwahang/etv_app",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^0.6.1",
+    "bower": "^1.3.1"
+  },
+  "scripts": {
+    "postinstall": "bower install",
+
+    "prestart": "npm install",
+    "start": "http-server -a 0.0.0.0 -p 8000"
+  }
+}
