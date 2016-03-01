@@ -48,13 +48,13 @@
     </tr>
   </thead>
   <tbody>
-  <tr ng-repeat="row in table_data | orderBy:sortType:sortReverse | daterange:start_date:end_date" >
+    <tr ng-repeat="row in table_data | orderBy:sortType:sortReverse | daterange:start_date:end_date" style="background-color: {{row.color}};">
     <td>{{row.city}}</td>
     <td>{{row.start_date| date}}</td>
     <td>{{row.end_date| date : 'MM/dd/yy'}}</td>
     <td>{{row.price| currency}}</td>
     <td>{{row.status}}</td>
-    <td style="color: {{ row.color }};">{{ row.color }}</td>
+    <td>{{ row.color }}</td>
   </tr>
   </tbody>
 </table>
