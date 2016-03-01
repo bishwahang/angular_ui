@@ -1,20 +1,20 @@
 (function(){
   'use strict'
 
-  angular.module('app_controllers', [])
+  angular.module('app_controllers', ['app_services'])
     .controller('TableController',TableController)
     .controller('ChartController',ChartController);
 
-  TableController.$inject = ['$scope'];
-  function TableController($scope){
+  TableController.$inject = ['$scope', 'DataService'];
+  function TableController($scope, DataService){
     console.log("Table Controller");
     $scope.name = "Bishwa"
   }
 
-  ChartController.$inject = ['$scope'];
-  function ChartController($scope){
+  ChartController.$inject = ['$scope', 'DataService'];
+  function ChartController($scope, DataService){
     console.log("Chart Controller");
-    $scope.name = "Bishwa"
+    $scope.name = DataService.name
   }
 
 })();
