@@ -26,16 +26,17 @@
   app.filter("daterange", function() {
     return function(data, from, to) {
       if ( from != null && to != null ) {
-        var filter_start = new Date(from);
-        var filter_end = new Date(to);
+        var range_start = new Date(from);
+        var range_end   = new Date(to);
         var result = [];
-        for (var i=0; i < data.length; i++){
-          var item_start = new Date(data[i].start_date),
-            item_end = new Date(data[i].end_date);
-          if (item_start >= filter_start && item_end <= filter_end)  {
-            result.push(data[i]);
+        angular.forEach(data, function(value, key){
+          var first_date = new Date(value.start_date),
+              last_date = new Date(value.end_date);
+          if(first_date >= range_start && last_date <= range_end){
+            result.push(value);
           }
-        }
+
+        })
         return result;
       } else {
         return data;
