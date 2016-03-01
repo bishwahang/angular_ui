@@ -30,8 +30,33 @@
 
   ChartController.$inject = ['$scope', 'DataService'];
   function ChartController($scope, DataService){
+    var getChartData = function(data, success){
+      var counter = data.length
+      var result = {}
+      angular.forEach(data,function(value, key){
+        counter -= 1
+        if (result[value.status] == null || result[value.status] == 'undefined'){
+          result[value.status] = 1
+        }else{
+          result[value.status] += 1
+        }
+        if(counter == 0){
+          success(result)
+        }
+      })
+    }
     DataService.getData(function(data){
-      $scope.chart_data = data
+      getChartData(data, function(res){
+        var array_keys = new Array();
+        var array_values = new Array();
+        for (var key in res) {
+            array_keys.push(key);
+            array_values.push(res[key]);
+        }
+        $scope.data   = [array_values];
+        $scope.labels = array_keys;
+        $scope.series = ["Status"];
+      });
     },function(){})
   }
 

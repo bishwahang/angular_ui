@@ -12,11 +12,5 @@
       });
     }
     return {getData: getData}
-    // var temp_data = []
-    // $http.get('data/data.json').success(function(data) {
-    //   angular.forEach(data, function(key, value))
-    // });
-    // console.log("data_service",data_service)
-    // return data_service
   }
 })();
