@@ -1,1 +1,60 @@
-This is a table {{name}}
+<section class="form-inline">
+  <div class="form-group input-group col-sm-3">
+    <label class="input-group-addon" for="start_date">Start Date</label>
+    <input class="form-control" ng-model='start_date' ui-date="dateOptions" ng-required="true" name="start_date" id="start_date" placeholder="M d, Y">
+  </div>
+  <div class="form-group input-group col-sm-3">
+    <label class="input-group-addon" for="end_date">End Date</label>
+    <input class="form-control" ng-model='end_date' ui-date="dateOptions" ng-required="true" name="end_date" id="end_date" placeholder="M d, Y">
+  </div>
+  <div class="form-group input-group col-sm-3">
+    <button type="button" class="btn btn-success" ng-click="resetDate()">Reset</button>
+  </div>
+</section>
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+  <thead class="col-12-xs">
+    <tr class="info text-capitalize">
+      <th ng-click="sortType = 'city'; sortReverse = !sortReverse">
+        <span>city</span>
+        <span ng-show="sortType == 'city' && !sortReverse" class="glyphicon glyphicon-chevron-down"></span>
+        <span ng-show="sortType == 'city' && sortReverse" class="glyphicon glyphicon-chevron-up"></span>
+      </th>
+      <th ng-click="sortType = 'start_date'; sortReverse = !sortReverse">
+        <span>start date</span>
+        <span ng-show="sortType == 'start_date' && !sortReverse" class="glyphicon glyphicon-chevron-down"></span>
+        <span ng-show="sortType == 'start_date' && sortReverse" class="glyphicon glyphicon-chevron-up"></span>
+      </th>
+      <th ng-click="sortType = 'end_date'; sortReverse = !sortReverse">
+        <span>end date</span>
+        <span ng-show="sortType == 'end_date' && !sortReverse" class="glyphicon glyphicon-chevron-down"></span>
+        <span ng-show="sortType == 'end_date' && sortReverse" class="glyphicon glyphicon-chevron-up"></span>
+      </th>
+      <th ng-click="sortType = 'price'; sortReverse = !sortReverse">
+        <span>price</span>
+        <span ng-show="sortType == 'price' && !sortReverse" class="glyphicon glyphicon-chevron-down"></span>
+        <span ng-show="sortType == 'price' && sortReverse" class="glyphicon glyphicon-chevron-up"></span>
+      </th>
+      <th ng-click="sortType = 'status'; sortReverse = !sortReverse">
+        <span>status</span>
+        <span ng-show="sortType == 'status' && !sortReverse" class="glyphicon glyphicon-chevron-down"></span>
+        <span ng-show="sortType == 'status' && sortReverse" class="glyphicon glyphicon-chevron-up"></span>
+      </th>
+      <th ng-click="sortType = 'color'; sortReverse = !sortReverse">
+        <span>color</span>
+        <span ng-show="sortType == 'color' && !sortReverse" class="glyphicon glyphicon-chevron-down"></span>
+        <span ng-show="sortType == 'color' && sortReverse" class="glyphicon glyphicon-chevron-up"></span>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr ng-repeat="row in table_data | orderBy:sortType:sortReverse | daterange:start_date:end_date" >
+    <td>{{row.city}}</td>
+    <td>{{row.start_date| date}}</td>
+    <td>{{row.end_date| date : 'MM/dd/yy'}}</td>
+    <td>{{row.price| currency}}</td>
+    <td>{{row.status}}</td>
+    <td style="color: {{ row.color }};">{{ row.color }}</td>
+  </tr>
+  </tbody>
+</table>
