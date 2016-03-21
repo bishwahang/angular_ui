@@ -1,4 +1,4 @@
-#kloeckner.i & etVenture Front-End Challenge
+# Minimalistic Angluar UI example
 
 Usage
 
@@ -7,3 +7,5 @@ Usage
 npm start
 
 ```
+
+kloeckner.i & etVenture Front-End Challenge
