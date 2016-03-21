@@ -25,24 +25,22 @@
   })
   app.filter("daterange", function() {
     return function(data, from, to) {
-      if ( from != null && to != null ) {
-        var range_start = new Date(from);
-        var range_end   = new Date(to);
+      if ( from && to ) {
         var result = [];
+        from = new Date(from);
+        to = new Date(to);
+
         angular.forEach(data, function(value, key){
-          var first_date = new Date(value.start_date),
-              last_date = new Date(value.end_date);
-          if(first_date >= range_start && last_date <= range_end){
+          if( new Date(value.start_date) >= from &&
+              new Date(value.end_date) <= to
+            ){
             result.push(value);
           }
-
         })
         return result;
-      } else {
-        return data;
       }
+      return data;
     };
   });
 }
 )()
-
