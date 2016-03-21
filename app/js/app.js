@@ -32,7 +32,7 @@
 
         angular.forEach(data, function(value, key){
           if( new Date(value.start_date) >= from &&
-              new new Date(value.end_date) <= to
+              new Date(value.end_date) <= to
             ){
             result.push(value);
           }
